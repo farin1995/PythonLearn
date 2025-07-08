@@ -10,11 +10,8 @@ def binary_search_recursive(arr, target, left, right):
         return binary_search_recursive(arr, target, left, mid - 1)
 
 arr = [1, 3, 5, 7, 9, 11]
-target = 7
+target = 13
 
-# Iterative
-result = binary_search(arr, target)
-print("Iterative: Found at index", result)
 
 # Recursive
 result = binary_search_recursive(arr, target, 0, len(arr) - 1)

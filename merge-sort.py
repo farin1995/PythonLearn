@@ -36,5 +36,3 @@ arr = [38, 27, 43, 3, 9, 82, 10]
 merge_sort(arr)
 print("Sorted array:", arr)
 
-
-This code is simple and demonstrates the divide-and-conquer approach of Merge Sort. You can adapt it as needed for your project.

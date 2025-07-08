@@ -32,7 +32,7 @@ def merge_sort(arr):
             k += 1
 
 # Example usage
-arr = [38, 27, 43, 3, 9, 82, 10]
+arr = [38, 27, 43, 3, 9, 82, 10,2333,54,5554]
 merge_sort(arr)
 print("Sorted array:", arr)
 

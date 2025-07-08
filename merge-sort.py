@@ -1,6 +1,3 @@
-Here’s a concise implementation of the Merge Sort algorithm in Python. While I can't directly provide GitHub links, you can use this code or search for "merge sort Python" on GitHub for more examples.
-
-Copy the code
 def merge_sort(arr):
     if len(arr) > 1:
         mid = len(arr) // 2

@@ -9,8 +9,8 @@ def binary_search_recursive(arr, target, left, right):
     else:
         return binary_search_recursive(arr, target, left, mid - 1)
 
-arr = [1, 3, 5, 7, 9, 11]
-target = 13
+arr = [1, 3, 5, 7, 9, 11,0,55,0,9]
+target = 9
 
 
 # Recursive

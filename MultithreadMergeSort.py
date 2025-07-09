@@ -1,63 +1,42 @@
-import threading
-
-def merge_sort(arr,arr2):
+def merge_sort(arr, key_index=0):
+    # Base case: if the array has one or no elements, it's already sorted
     if len(arr) <= 1:
         return arr
-    if len(arr2) <= 1:
-        return arr2
+
+    # Split the array into two halves
     mid = len(arr) // 2
-    left = arr[:mid]
-    right = arr[mid:]
-    mid2 = len(arr2) // 2
-    left2 = arr[:mid2]
-    right2 = arr[mid2:]
-    # Create threads for sorting left and right halves
-    left_thread = threading.Thread(target=lambda: merge_sort(left,left2))
-    right_thread = threading.Thread(target=lambda: merge_sort(right,right2))
-    # left_thread2 = threading.Thread(target=lambda: merge_sort(left2))
-    # right_thread2 = threading.Thread(target=lambda: merge_sort(right2))
-    left_thread.start()
-    right_thread.start()
-    # left_thread2.start()
-    # right_thread2.start()
-    left_thread.join()
-    right_thread.join()
-    # left_thread2.join()
-    # right_thread2.join()
+    left_half = merge_sort(arr[:mid], key_index)
+    right_half = merge_sort(arr[mid:], key_index)
 
-    return merge(left, right, left2, right2)
+    # Merge the sorted halves
+    return merge(left_half, right_half, key_index)
 
-def merge(left, right, left2, right2):
-    result = []
-    i = j = k = l = 0
+def merge(left, right, key_index):
+    sorted_array = []
+    i = j = 0
 
-    # Merge two sorted arrays
+    # Compare elements from both halves and merge them in sorted order
     while i < len(left) and j < len(right):
-        if left[i] < right[j]:
-            result.append(left[i])
+        if left[i][key_index] <= right[j][key_index]:
+            sorted_array.append(left[i])
             i += 1
         else:
-            result.append(right[j])
+            sorted_array.append(right[j])
             j += 1
-    while k < len(left2) and l < len(right2):
-        if left2[k] < right2[l]:
-            result.append(left2[k])
-            k += 1
-        else:
-            result.append(right2[l])
-            l += 1
 
-    # Append remaining elements
-    result.extend(left[i:])
-    result.extend(right[j:])
-    result.extend(left2[k:])
-    result.extend(right2[l:])
-    return result
+    # Append any remaining elements from the left or right half
+    sorted_array.extend(left[i:])
+    sorted_array.extend(right[j:])
+
+    return sorted_array
 
 # Example usage
-if __name__ == "__main__":
-    arr = [38, 27, 43, 3, 9, 82, 10]
-    arr2 = [11, 27, 34, 3, 2, 8, 10]
-    print("Original array:", arr, arr2)
-    sorted_arr = merge_sort(arr, arr2)
-    print("Sorted array:", sorted_arr)
+multi_array = [
+    [3, 2, 5],
+    [1, 4, 9],
+    [2, 8, 6],
+    [0, 7, 3]
+]
+
+sorted_array = merge_sort(multi_array, key_index=0)  # Sort by the first column
+print("Sorted Array:", sorted_array)

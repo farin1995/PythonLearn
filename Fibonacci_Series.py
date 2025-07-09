@@ -5,5 +5,5 @@ def fibonacci_loop(n):
     return fib_series[:n]
 
 # Example usage
-n = 10
+n = 20
 print(fibonacci_loop(n))
